@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Encriptador</title>
+</head>
+<body>
+    <header>
+        <h2>Encriptador de Texto</h2>
+    </header>
+        
+    <div id="particulas">
+        <canvas id="matrix">Reinicia la página</canvas>
+        
+    </div> 
+	<script src="matrix.js"></script>
+    <div id="cuerpo">
+        <section>
+            <main>
+                    <img src="img/logo.svg" alt="">
+                <div id="centro">
+                    <textarea name="input-texto" id="input-texto" cols="30" rows="10" placeholder=" ▲ Ingrese un texto sin asentos y en minusculas para ser Codificado ▲"></textarea>
+                </div>
+                <div id="centro">
+                    <button id="boton1">encriptar</button>
+                    <button id="boton2">desencriptar</button>
+                    <button id="borrar">refresh</button>
+                </div>
+            </main>
+            <aside>
+                <div class="encriptar off" id="encrip">
+                    <h3>texto encriptado<h3>
+                    <textarea class="imagen" name="encriptado" id="encriptado" cols="30" rows="10"></textarea> 
+                </div>
+                <div class="encriptar" id="encript">
+                    <img src="img/muneco.svg" alt="">
+                    <p class="grande">Ningun mensaje fue<br>encontrado</p>
+                    <p>Ingrese el texto que desee encriptar o <br>desencriptar</p>
+                </div>
+                <div id="centro">
+                    <button id="boton3">copiar</button>
+                </div>
+            </aside>
+
+        </section>
+        <footer>
+            <a href="https://github.com/Lobo-Alejandro">
+                <img src="img/github.png" alt="logo github"></a>
+            <a href="https://www.linkedin.com/in/alejandro-lobo-83598a263/">
+                <img src="img/linkedin.png" alt="logo linkedin"></a>
+        </footer>
+</div>
+    
+</body>
+
+</html>
+<script>
+    var inp = document.getElementById("input-texto");
+    inp.focus();
+    var textarea= document.getElementById("encriptado");
+    var texto = inp;   //para pasar toda la cadena a la variable texto y poder trabajar
+    var guardar = [];
+    var encrip = document.getElementById("encrip");
+    var encript = document.getElementById("encript");
+
+    function encriptar(){
+        var frase=[];
+        for (let i = 0; i < texto.value.length; i++) {
+            switch (texto.value[i]) {
+                case 'a':
+                    frase[i]="ai";
+                    guardar[i]=frase[i];
+                break;
+                case 'e':
+                    frase[i]="enter";
+                    guardar[i]=frase[i];
+                break;
+                case 'i':
+                    frase[i]="imes";
+                    guardar[i]=frase[i];
+                break;
+                case 'o':
+                    frase[i]="ober";
+                    guardar[i]=frase[i];
+                break;
+                case 'u':
+                    frase[i]="ufat";
+                    guardar[i]=frase[i];
+                break;
+                default:
+                    frase[i]=texto.value[i];
+                    guardar[i]=frase[i];
+                    break;
+            }
+            /*if (texto.value[i]=="a") {
+                frase[i]="ai";
+            }else{
+                frase[i]=texto.value[i];
+
+            } */
+        }
+        /*alert(frase.length);
+        alert(texto.value.length);  //como tenemos cadena de caracteres tengo que ponerlo con el 'value' para que me de el 'length'
+        alert(guardar);*/
+
+        encrip.classList.remove('off');
+        encript.classList.add('off');
+        textarea.value=frase.join('');
+    }
+
+    
+    function desEncriptar(){
+        var textarea2= document.getElementById("encriptado");
+        var texto2 = textarea;
+        var desencriptado=[];
+        for (let i = 0; i < guardar.length; i++) {
+            switch (guardar[i]) {
+                case 'ai':
+                    desencriptado[i]="a";
+                break;
+                case 'enter':
+                    desencriptado[i]="e";
+                break;
+                case 'imes':
+                    desencriptado[i]="i";
+                break;
+                case 'ober':
+                    desencriptado[i]="o";
+                break;
+                case 'ufat':
+                    desencriptado[i]="u";
+                break;
+                default:
+                    desencriptado[i]=guardar[i];
+                    break;
+            }
+            /*if (texto.value[i]=="a") {
+                frase[i]="ai";
+            }else{
+                frase[i]=texto.value[i];
+
+            } */
+        }
+        //alert(frase.length);
+        //alert(texto.value.length);  //como tenemos cadena de caracteres tengo que ponerlo con el 'value' para que me de el 'length'
+        textarea2.value=desencriptado.join('');
+    }
+
+    function copiarTexto(){
+        //Obtenemos el campo de texto.
+        var copiar = document.getElementById("encriptado");
+        //Selecionamos el campo de texto.
+        copiar.select();
+        copiar.setSelectionRange(0, 99999); //Rango para moviles.
+        //Copia aquello que se encuentra dentro del campo de texto.
+        navigator.clipboard.writeText(copiar.value);
+        
+        //Alerta de validación de la copia del texto.
+        alert("Se copio el texto:  " + copiar.value);
+        console.log(alert);
+    }
+
+    function borrarTexto(){
+        inp.value='';
+        inp.focus();
+        textarea.value='';
+        encrip.classList.add('off');
+        encript.classList.remove('off');
+    }
+
+    var button1 = document.getElementById("boton1");
+    button1.onclick=encriptar;
+
+    var button2 = document.getElementById("boton2");
+    button2.onclick=desEncriptar;
+
+    var borrar = document.getElementById("borrar");
+    borrar.onclick=borrarTexto;
+
+    var button3 = document.getElementById("boton3");
+    button3.onclick=copiarTexto;
+</script>

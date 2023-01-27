@@ -1,0 +1,406 @@
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 2000px) {
+
+/*EFECTO NEON DEL TITULO*/
+h2 {
+    
+    position: relative;
+    font-size: 3.5em;
+    /*letter-spacing: 15px;*/
+    letter-spacing: 10px;
+    color: #0e3742;
+    /*text-transform: lowercase;*/
+    /*text-transform: uppercase;*/
+    width: 100%;
+    text-align: center;
+    -webkit-box-reflect: below 1px linear-gradient(transparent,#0008);
+    line-height: 0.70em;
+    outline: none;
+    animation: animate 5s linear infinite;
+    text-align: center;
+}
+
+@keyframes animate {
+    0%,18%,20%,50%,65%,80%,90%,92%
+    {
+        color: #0e3742;
+        text-shadow: none;
+    }
+    18%,20%,50%,65%,80%,90%,92%
+     {
+        color: #fff;
+        text-shadow: 0 0 10px #03bcf4,
+        0 0 20px #03bcf4,
+        0 0 40px #03bcf4,
+        0 0 80px #03bcf4,
+        0 0 160px #03bcf4;
+
+    }
+}
+
+/*++++++++++++++++++++++++*/
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#cuerpo {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1vh;
+}
+
+#particulas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    
+}
+header {
+    height: 8vh;
+    padding-top: 10px;
+    text-align: center;
+    background: transparent;
+    /*display: none;/*/
+    
+}
+
+h1 {
+    color: white;
+    z-index: 2;
+}
+    h1{
+        padding: 10px;
+    }
+    
+    section {
+        height: auto;
+        display: flex;
+        flex-direction: row;
+    }
+    textarea{
+        font-size: medium;
+    }
+
+    #logo {
+        display: inline-block;
+    }
+    main{
+        border-radius: 40px;
+        padding-left: 100px;
+        width: 60%;
+        background:transparent;
+    }
+    textarea{
+        border: solid rgb(68, 68, 199);
+        font-size: xx-large;
+        color: azure;
+        background: black;
+        padding: 20px;
+        width: 80%;
+        height: 45vh;
+        border-radius: 40px;
+        
+    }
+
+    #input-texto{
+        background: url(img/l4.jpg);
+        background-size: cover;
+    }
+    h3 {
+        color: white;
+    }
+    .encriptar.off{
+        display: none;
+    }
+    .encriptar{
+        text-align: center;
+    }
+    .grande {
+        color: white;
+        font-size: xx-large;
+        text-align: center;
+    }
+   
+    aside{
+        border-radius: 40px;
+        padding: 10px;
+        width: 40%;
+        background: transparent;
+    }
+    aside img{
+        width: 60%;
+    }
+    footer{
+        text-align: center;
+        padding: 10px;
+        background: transparent;
+        height: 10vh;
+    }
+
+    footer img {
+        padding-left: 30px;
+        width: 5% ;
+    }
+    p{
+        color: #fff;
+        font-size: large;
+        
+        padding: 5px;
+        
+    }
+    #encrip {
+        text-align: center;
+    }
+
+    #centro{
+        text-align: center;
+    }
+    button{
+        margin: 5px;
+        border-radius: 25px;
+        padding: 30px;
+    }
+    button {
+        background: black;
+        cursor: pointer;
+        border: none;
+        padding: 16px 32px;
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+        position: relative;
+        border-radius: 25px;
+    }
+    
+    button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg,
+        red, blue, deeppink, blue,
+        red, blue, deeppink, blue
+        );
+        background-size: 800%;
+        border-radius: 10px;
+        filter: blur(8px);
+        animation: glowing 20s linear infinite;
+    }
+    
+    @keyframes glowing{
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 400% 0;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    p {
+    
+        position: relative;
+        font-size: 1em;
+        /*letter-spacing: 15px;*/
+        letter-spacing: 5px;
+        color: #0e3742;
+        /*text-transform: lowercase;*/
+        /*text-transform: uppercase;*/
+        width: 100%;
+        text-align: center;
+        -webkit-box-reflect: below 1px linear-gradient(transparent,#0008);
+        line-height: 0.70em;
+        outline: none;
+        animation: animate 5s linear infinite;
+        text-align: center;
+    }
+
+    #encript {
+        padding-top: 40px;
+        vertical-align: middle;
+    }
+    .imagen {
+        padding-top: 40px;
+    }
+}
+
+
+ /*   @media screen and (max-height: 600px) {
+        section {
+            display: flex;
+            flex-direction: column;
+          height: 100%;
+          width: 100%;
+        }
+
+        textarea{
+            color: azure;
+            background: black;
+            padding: 10px;
+            width: 90%;
+            height: 10vh;
+            border-radius: 40px;
+            
+        }
+        button {
+            height: 5vh;
+            padding: 0;
+            font-size: 15px;
+        }
+      
+
+      h2 {
+        font-size: 2.2em;
+      }
+      aside {
+        align-items: center;
+        width: 100%;
+        height: 50%;
+
+      }
+      aside img{
+        height: 50%;
+        width: 40%;
+    }
+
+    .grande {
+        color: white;
+        font-size: large;
+        text-align: center;
+    }
+
+    p {
+        font-size: 0.5em;
+    }
+}*/
+
+
+@media screen and (max-width: 900px) {
+    /*section {
+        display: flex;
+        flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }*/
+
+    textarea{
+        font-size: 12px;
+        color: azure;
+        background: black;
+        padding: 10px;
+        width: 90%;
+        height: 40vh;
+        border-radius: 40px;
+        
+    }
+    button {
+        height: 2vh;
+        padding: 0;
+        font-size: 15px;
+    }
+  
+
+  h2 {
+    font-size: 1.2em;
+  }
+  aside {
+    align-items: center;
+    width: 100%;
+    height: 50%;
+
+  }
+  aside img{
+    height: 50%;
+    width: 40%;
+}
+
+.grande {
+    color: white;
+    font-size: large;
+    text-align: center;
+}
+
+p {
+    font-size: 0.5em;
+}
+
+}
+
+@media screen and (max-width: 700px) {
+    section {
+        display: flex;
+        flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    textarea{
+        font-size: 12px;
+        color: azure;
+        background: black;
+        padding: 10px;
+        width: 90%;
+        height: 10vh;
+        border-radius: 40px;
+        
+    }
+    button {
+        height: 5vh;
+        padding: 0;
+        font-size: 15px;
+    }
+  
+
+  h2 {
+    font-size: 2.2em;
+  }
+  aside {
+    align-items: center;
+    width: 100%;
+    height: 50%;
+
+  }
+  aside img{
+    height: 50%;
+    width: 40%;
+}
+
+.grande {
+    color: white;
+    font-size: large;
+    text-align: center;
+}
+
+p {
+    font-size: 0.5em;
+}
+}
+
+
+
+
+
+
+
