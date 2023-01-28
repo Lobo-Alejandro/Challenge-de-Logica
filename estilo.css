@@ -148,15 +148,20 @@ h1 {
         width: 60%;
     }
     footer{
+        color: white;
         text-align: center;
         padding: 10px;
         background: transparent;
         height: 10vh;
+        align-items: center;
     }
 
     footer img {
-        padding-left: 30px;
+        border-radius: 50%;
+        background: rgb(74, 74, 223);
+        /*padding-left: 30px;*/
         width: 5% ;
+        color: #0e3742;
     }
     p{
         color: #fff;
