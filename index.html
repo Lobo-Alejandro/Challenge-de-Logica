@@ -22,7 +22,7 @@
             <main>
                     <img src="img/logo.svg" alt="">
                 <div id="centro">
-                    <textarea name="input-texto" id="input-texto" cols="30" rows="10" placeholder=" ▲ Ingrese un texto sin asentos y en minusculas para ser Codificado ▲"></textarea>
+                    <textarea name="input-texto" id="input-texto" cols="30" rows="10" placeholder="► Ingrese un texto sin asentos y en minusculas para ser Codificado ◄"></textarea>
                 </div>
                 <div id="centro">
                     <button id="boton1">encriptar</button>
@@ -66,6 +66,65 @@
     var guardar = [];
     var encrip = document.getElementById("encrip");
     var encript = document.getElementById("encript");
+	
+	function valida(){
+        var puede;
+        for (let i = 0; i < texto.value.length; i++) {
+            var camb = texto.value[i];
+            var asciiCod = camb.charCodeAt(0);
+            var a=2;
+            var frase=[];
+            
+            if ((96<asciiCod && asciiCod<123)) {
+                    a=0;
+                        
+            }else if (asciiCod == 32){
+                a=0;
+            }else{
+                a=1;
+
+
+            }
+            if (a != 0) {
+                alert("El texto no puede llevar MAYUSCULAS ni CARACTERES ESPECIALES");
+                borrarTexto();            }
+            puede=a;
+        }
+        if (puede==0) {
+            encriptar();
+        }
+    }
+
+     function validar(){
+        var puede;
+        for (let i = 0; i < texto.value.length; i++) {
+            var x = texto.value[i];
+            var asciiCod = x.charCodeAt(0);
+            var a=2;
+            var frase=[];
+            
+            if ((96<asciiCod && asciiCod<123)) {
+                    a=0;
+                        
+            }else if (asciiCod == 32){
+                a=0;
+                     
+
+            }else{
+                a=1;
+
+
+            }
+            if (a != 0) {
+                alert("El texto no puede llevar MAYUSCULAS ni CARACTERES ESPECIALES");
+                borrarTexto();            }
+            puede=a;
+        }
+        if (puede==0) {
+            desEncriptar();
+        }
+    }
+
 
     function encriptar(){
         var frase=[];
@@ -96,17 +155,6 @@
                     guardar[i]=frase[i];
                     break;
             }
-            /*if (texto.value[i]=="a") {
-                frase[i]="ai";
-            }else{
-                frase[i]=texto.value[i];
-
-            } */
-        }
-        /*alert(frase.length);
-        alert(texto.value.length);  //como tenemos cadena de caracteres tengo que ponerlo con el 'value' para que me de el 'length'
-        alert(guardar);*/
-
         encrip.classList.remove('off');
         encript.classList.add('off');
         textarea.value=frase.join('');
@@ -114,40 +162,38 @@
 
     
     function desEncriptar(){
-        var textarea2= document.getElementById("encriptado");
-        var texto2 = textarea;
+        var inp = document.getElementById("input-texto");
+        var texto = inp;
         var desencriptado=[];
-        for (let i = 0; i < guardar.length; i++) {
-            switch (guardar[i]) {
-                case 'ai':
+        for (let i = 0; i < texto.value.length; i++) {
+                if ((texto.value[i]=='a') && (texto.value[i+1]=='i')) {
                     desencriptado[i]="a";
-                break;
-                case 'enter':
+                    guardar[i]=desencriptado[i];
+                    i +=1;
+                }else if (texto.value[i]=='e' && texto.value[i+1]=='n' && texto.value[i+2]=='t' && texto.value[i+3]=='e' && texto.value[i+4]=='r')  {
                     desencriptado[i]="e";
-                break;
-                case 'imes':
+                    guardar[i]=desencriptado[i];
+                    i += 4;
+                }else if (texto.value[i]=='i' && texto.value[i+1]=='m' && texto.value[i+2]=='e' && texto.value[i+3]=='s') {
                     desencriptado[i]="i";
-                break;
-                case 'ober':
+                    guardar[i]=desencriptado[i];
+                      i += 3;
+                }else if (texto.value[i]=='o' && texto.value[i+1]=='b' && texto.value[i+2]=='e' && texto.value[i+3]=='r') {
                     desencriptado[i]="o";
-                break;
-                case 'ufat':
+                    guardar[i]=desencriptado[i];
+                      i += 3;
+                }else if (texto.value[i]=='u' && texto.value[i+1]=='f' && texto.value[i+2]=='a' && texto.value[i+3]=='t') {
                     desencriptado[i]="u";
-                break;
-                default:
-                    desencriptado[i]=guardar[i];
-                    break;
+                    guardar[i]=desencriptado[i];
+                      i += 3;
+                }else{
+                    desencriptado[i]=texto.value[i];
+                    guardar[i]=desencriptado[i];
+                }
             }
-            /*if (texto.value[i]=="a") {
-                frase[i]="ai";
-            }else{
-                frase[i]=texto.value[i];
-
-            } */
-        }
-        //alert(frase.length);
-        //alert(texto.value.length);  //como tenemos cadena de caracteres tengo que ponerlo con el 'value' para que me de el 'length'
-        textarea2.value=desencriptado.join('');
+            encrip.classList.remove('off');
+            encript.classList.add('off');
+            textarea.value=desencriptado.join('');
     }
 
     function copiarTexto(){
@@ -173,10 +219,10 @@
     }
 
     var button1 = document.getElementById("boton1");
-    button1.onclick=encriptar;
+    button1.onclick=valida;
 
     var button2 = document.getElementById("boton2");
-    button2.onclick=desEncriptar;
+    button2.onclick=validar;
 
     var borrar = document.getElementById("borrar");
     borrar.onclick=borrarTexto;
